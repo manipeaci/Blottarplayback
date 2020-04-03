@@ -1,6 +1,13 @@
 // Static initial values
-Howler["_volume"] = 0.5;
-let startTime = new Date('April 4, 2020 12:00:00')
+if (localStorage.volume === undefined) {
+    localStorage.volume = 0.5;
+    Howler["_volume"] = 0.5;
+} else {
+    Howler["_volume"] = localStorage.volume;
+    document.getElementById("volume").value = localStorage.volume * 100;
+}
+
+let startTime = new Date('April 4, 2020 00:13:00')
 let tigerRagMp3 = new Howl({
     src: ['SOUNDS/Tiger_Rag.mp3'],
 });

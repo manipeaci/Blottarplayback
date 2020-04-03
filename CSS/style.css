@@ -52,6 +52,15 @@ hr.divider{
   width:210px;
 }
 
+.dance {
+  animation: dance 0.2s alternate infinite;
+}
+
+@keyframes dance {
+  from {transform: translateY(10px) rotate(10deg)}
+  to {transform: translateY(0px)}
+}
+
 #container{
   flex-grow: 5;
   display: flex;
@@ -72,6 +81,10 @@ hr.divider{
 
 #volume{
   margin-top: 8vh;
+}
+
+.fa {
+  transform: translate(0px, -6px);
 }
 
   .slider {

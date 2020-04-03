@@ -4,13 +4,17 @@
 
 
 // Error-messages for console:
-tigerRagMp3.on('play', function () { console.info("%c'Tiger Rag' is playing. 🐯", "color: green"); });
+tigerRagMp3.on('play', function () {
+    console.info("%c'Tiger Rag' playing! 🐯", "color: green");
+    document.getElementById('blottartuban').classList.add("dance");
+});
 tigerRagMp3.on('end', function () { console.info("'Tiger Rag' has ended"); });
 
 // Setting the volume:
 let volume = document.getElementById('volume');
 volume.addEventListener('change', () => {
     Howler.volume(volume.value / 100);
+    localStorage.volume = volume.value / 100;
 });
 
 function playTiger() {
@@ -26,7 +30,7 @@ tigerRagMp3.on('load', function () {
         console.info("You have to wait");
     }
     else if (untilTime() > -ragLength) {
-        console.info("%cTrying to start 'Tiger Rag'.", "color: grey");
+        console.info("%c'Tiger Rag' coming up.", "color: grey");
         playTiger();
     }
     else {
