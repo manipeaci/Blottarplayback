@@ -2,27 +2,46 @@
 <html lang="sv" dir="ltr">
 
 <head>
-    <meta charset="utf-8">
-    <title>TITEL</title>
+  <meta charset="utf-8">
+  <title>Blottarplayback</title>
 
-    <link rel="stylesheet" href="CSS/reset.css">
-    <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/style.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Favicons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <main>
-        <h1>Rubrik</h1>
+  <main>
+    <h1 class="rubrik">Blottarplayback</h1>
+    <hr class="divider">
+    <p>Tigern börjar <span id="starttime">13:30</span>. Ta på dig hörlurar!</p>
 
-        <span id="countdown">00:00:00</span>
-        <div id="blottartuban"><img alt="Bild på blottartuban" src=""></div>
-        <input type="range" min="1" max="100" value="50" id="volume">
+    <div id="wrapper">
+      <div id="blottartuban">
+        <img alt="Bild på blottartuban" src="Images/Blottartuban.svg">
+      </div>
+      <div id="container">
+        <span id="countdown">
+          00:00:00
+        </span>
 
+        <div id="volume-wrapper">
+          <i class="fa fa-volume-down"></i>
+          <input id="volume" class="slider" type="range" min="1" max="100" value="50">
+          <i class="fa fa-volume-up"></i>
+        </div>
+      </div>
 
-    </main>
+    </div>
 
-    <script src="SCRIPT/script.js"></script>
+  </main>
+  <script src="howlernew.js"></script>
+  <script src="SCRIPT/script.js"></script>
 </body>
 
 </html>
