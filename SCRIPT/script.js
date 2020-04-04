@@ -7,7 +7,7 @@ if (localStorage.volume === undefined) {
     document.getElementById("volume").value = localStorage.volume * 100;
 }
 
-let startTime = new Date('April 4, 2020 00:13:00')
+let startTime = new Date('April 4, 2020 12:00:00')
 let tigerRagMp3 = new Howl({
     src: ['SOUNDS/Tiger_Rag.mp3'],
 });

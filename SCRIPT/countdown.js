@@ -14,7 +14,7 @@ function updateTimers(startTime) {
     let milliToSecond = (milli) => appendZero(round(milli % (1000 * 60) / (1000)));
 
     startTimeText = document.getElementById("starttime");
-    startTimeText.innerHTML = `${milliToHour(startTime)}:${milliToMinute(startTime)}`;
+    startTimeText.innerHTML = `${(appendZero(startTime.getHours()))}:${appendZero(startTime.getMinutes())}`;
 
     let countdown = document.getElementById('countdown');
     let interval = setInterval(() => {
