@@ -1,41 +1,34 @@
-
-// Hanterar bara den visuella tiden på sidan.
-// id: starttime - för adresserad tid.
-// id: countdown - för nedräkningen.
-//
-// Behöver bara var. "startHour" och "StartMinute"
-
 function updateTimers(startTime) {
+
+    // Two helper functions
     let appendZero = (n) => (n <= 9) ? "0" + n : n;
     let round = (n) => Math.floor(n);
 
-    let milliToHour = (milli) => appendZero(round(milli % (1000 * 60 * 60 * 60) / (1000 * 60 * 60)));
-    let milliToMinute = (milli) => appendZero(round(milli % (1000 * 60 * 60) / (1000 * 60)));
-    let milliToSecond = (milli) => appendZero(round(milli % (1000 * 60) / (1000)));
+    // Display the start time
+    let time = [
+        startTime.getHours(),
+        startTime.getMinutes()
+    ].map(appendZero);
 
-    startTimeText = document.getElementById("starttime");
-    startTimeText.innerHTML = `${(appendZero(startTime.getHours()))}:${appendZero(startTime.getMinutes())}`;
+    startTimeText.innerHTML = `${time[0]}:${time[1]}`;
 
-    let countdown = document.getElementById('countdown');
-    let interval = setInterval(() => {
-        let now = new Date().getTime();
-        let difference = startTime - now;
+    // Display the countdown
+    function displayCountDown() {
+        let difference = distance();
         if (difference < 0) {
-            clearInterval(interval);
-            tigerRagMp3.on('play', function () {
-                countdown.innerHTML = "Nu kör vi!";
-            });
-            tigerRagMp3.on('end', function () {
-                countdown.innerHTML = "Nu är det slut!";
-            });
+            clearInterval(updateCountDown);
         }
         else {
-            let h = milliToHour(difference);
-            let m = milliToMinute(difference);
-            let s = milliToSecond(difference);
-            countdown.innerHTML = (`${h}:${m}:${s}`);
+            let fullTime = [
+                (difference % (1000 * 60 ** 3)) / (1000 * 60 ** 2),
+                (difference % (1000 * 60 ** 2)) / (1000 * 60),
+                (difference % (1000 * 60)) / 1000
+            ].map(round).map(appendZero);
+            countdown.innerHTML = (`${fullTime[0]}:${fullTime[1]}:${fullTime[2]}`);
         }
-    }, 500);
+    }
+
+    let updateCountDown = setInterval(displayCountDown, 500);
 }
 
 updateTimers(startTime);
